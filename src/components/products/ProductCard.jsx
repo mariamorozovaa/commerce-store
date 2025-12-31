@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 export default function ProductCard({ product }) {
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <div className="product-card">
       <img className="product-card__image" src={product.image} alt={product.title} />
@@ -10,6 +16,7 @@ export default function ProductCard({ product }) {
       <Link className="product-card__button" to={`/products/${product.id}`}>
         Подробнее
       </Link>
+      <button onClick={handleAddToCart}>Добавить в корзину</button>
     </div>
   );
 }
