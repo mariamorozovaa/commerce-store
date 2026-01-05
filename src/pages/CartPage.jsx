@@ -4,9 +4,11 @@ import CartSummary from "../components/cart/CartSummary";
 
 export default function CartPage() {
   const cartItems = useSelector((state) => state.cart.items);
+
+  if (cartItems.length === 0) return <p>Ваша корзина пуста</p>;
+
   return (
     <div>
-      {cartItems.length === 0 && <p>Ваша корзина пуста</p>}
       {cartItems.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}
