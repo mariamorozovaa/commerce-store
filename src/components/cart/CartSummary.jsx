@@ -7,7 +7,7 @@ export default function CartSummary({ items }) {
   return (
     <div className="cart-summary">
       <p>Сумма: {total.toFixed(2)}$</p>
-      <Link to="/checkout">Проверить</Link>
+      <Link to="/checkout">Заказать</Link>
     </div>
   );
 }
