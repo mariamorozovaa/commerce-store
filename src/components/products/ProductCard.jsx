@@ -10,7 +10,9 @@ export default function ProductCard({ product }) {
     dispatch(addToCart(product));
   };
   const wishlistIds = useSelector((state) => state.wishlist.items);
+  const cartItems = useSelector((state) => state.cart.items);
   const isInWishlist = wishlistIds.includes(product.id);
+  const isInCart = cartItems.some((item) => item.id === product.id);
 
   return (
     <div className="product-card">
@@ -24,7 +26,9 @@ export default function ProductCard({ product }) {
       <Link className="product-card__button" to={`/products/${product.id}`}>
         Подробнее
       </Link>
-      <button onClick={handleAddToCart}>Добавить в корзину</button>
+      <button onClick={handleAddToCart} disabled={isInCart}>
+        {isInCart ? "В корзине" : "Добавить в корзину"}
+      </button>
     </div>
   );
 }
