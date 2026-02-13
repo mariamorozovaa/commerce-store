@@ -1,7 +1,5 @@
+import "../../styles/ErrorMessage.css";
+
 export default function ErrorMessage({ message }) {
-  return (
-    <div className="error-message" style={{ color: "red" }}>
-      ⚠️ {message}
-    </div>
-  );
+  return <div className="error-message">⚠️ {message}</div>;
 }

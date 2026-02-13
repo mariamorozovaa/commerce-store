@@ -16,19 +16,22 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="product-card">
-      <button onClick={() => dispatch(toggleWishlist(product.id))} style={{ color: "red" }}>
-        {isInWishlist ? "♥︎" : "♡"}
-      </button>
-      <img className="product-card__image" src={product.image} alt={product.title} />
-      <h3 className="product-card__title">{product.title}</h3>
-      <p className="product-card__price">{product.price}$</p>
-      <p className="product-card__rating">⭐ {product.rating.rate}</p>
-      <Link className="product-card__button" to={`/products/${product.id}`}>
-        Подробнее
-      </Link>
-      <button onClick={handleAddToCart} disabled={isInCart}>
-        {isInCart ? "В корзине" : "Добавить в корзину"}
-      </button>
+      <img className="product-image" src={product.image} alt={product.title} />
+      <div className="product-content">
+        <h3 className="product-title">{product.title}</h3>
+        <p className="product-price">{product.price}$</p>
+        <p className="product-rating">⭐ {product.rating.rate}</p>
+      </div>
+
+      <div className="product-actions">
+        <Link to={`/products/${product.id}`}>Подробнее</Link>
+        <button onClick={() => dispatch(toggleWishlist(product.id))} style={{ color: "red" }}>
+          {isInWishlist ? "♥︎" : "♡"}
+        </button>
+        <button onClick={handleAddToCart} disabled={isInCart}>
+          {isInCart ? "В корзине" : "Добавить в корзину"}
+        </button>
+      </div>
     </div>
   );
 }
